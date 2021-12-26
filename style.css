@@ -1,0 +1,30 @@
+html {
+    box-sizing: border-box;
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: aquamarine;
+    border: 1px red solid;
+}
+
+.calculator-wrapper {
+    width: 90vw;
+    height: 90vh;
+
+    display: grid;
+
+    background: pink;
+    border: 1px solid blue;
+}
