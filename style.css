@@ -11,9 +11,9 @@ body {
     width: 100vw;
     height: 100vh;
 
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
 
     background-color: aquamarine;
     border: 1px red solid;
@@ -24,7 +24,31 @@ body {
     height: 90vh;
 
     display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: stretch ;
+    align-items: stretch;
+    /* grid-template-areas: 
+    'display display display'
+    'number number number'
+    'number number number'
+    'number number number'
+    'operator operator operator'
+    'operator operator operator'
+    ; */
 
     background: pink;
     border: 1px solid blue;
+}
+.digit-button {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.digit-button-0 {
+    grid-column: span 3;
+}
+.operator-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

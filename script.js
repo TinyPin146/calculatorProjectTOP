@@ -1,3 +1,6 @@
+const digitButtons = document.querySelectorAll('.digit-button button');
+const operatorButtons = document.querySelectorAll('.operator-button button');
+const digitScreen = document.querySelector('.digit-screen p')
 
 const add = function() {
     return arguments[0] + arguments[1];
