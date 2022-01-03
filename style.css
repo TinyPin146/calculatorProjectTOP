@@ -43,6 +43,7 @@ body {
 }
 .digit-button {
     display: grid;
+    grid-gap: .1rem;
     grid-template-columns: repeat(3, 1fr);
 }
 .digit-button-0 {
@@ -50,5 +51,6 @@ body {
 }
 .operator-button {
     display: grid;
+    grid-gap: .1rem;
     grid-template-columns: 1fr 1fr;
 }
