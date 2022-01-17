@@ -37,11 +37,41 @@ const multiply = function() {
 
   function handleOperatorButtons(e) {
     console.log(e.currentTarget.textContent);
+
+    let result = 0;
+
     switch (e.currentTarget.textContent) {
       case '+': 
-        console.log('its a +')
-        break
+        console.log('its a +');
+        arrOfNumbers.push(currentNum);
+        arrOfDigits = [];
+        currentNum = null;
+        digitScreen.textContent = currentNum;    
+
+        add(arrOfNumbers);
+
+        break;
+      case '-': 
+        console.log('its a -');
+        break;
+      case '*': 
+        console.log('its a *');
+        break;
+      case '/': 
+        console.log('its a /');
+        break;
+      case 'CA': 
+        console.log('its CA');
+        break;
+      case 'C': 
+        console.log('its a C');
+        break;
+      case '=': 
+        console.log('its a =');
+        digitScreen.textContent = result;
+
+        break;
       default:
         console.log('How did you fuck this up?');
     }
-  }
+  };
