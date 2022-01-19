@@ -1,8 +1,8 @@
 :root {
-    --color-dark: #3c1111;
-    --color-dark-light: #897270;
-    --color-highlight: #aca5a5;
-    --color-dark-complementer: #1b2300;
+    --color-dark: #000000;
+    --color-dark-light: #bda313;
+    --color-highlight: #e2dada;
+    --color-dark-complementer: #5b5c5a;
 
     --br-buttons: 10px;
 }
@@ -63,7 +63,12 @@ body {
     border: 1px var(--color-dark-complementer) solid;
     /* box-shadow: 0px 10px 13px -7px #ff7d5d; */
     border-radius: var(--br-buttons);
+    opacity: .7;
     
+}
+.digit-button button:hover {
+    transition: all .2s;
+    opacity: 1;
 }
 .digit-button-0 {
     grid-column: span 3;
