@@ -57,7 +57,7 @@ function handleDigitButtons(e) {
         
         break;
         default:
-        console.log('How did you fuck this up?');
+        console.log('How did you f this up?');
       }
     };
 
