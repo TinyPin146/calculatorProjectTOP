@@ -1,66 +1,22 @@
-const digitButtons = document.querySelectorAll('.digit-button button');
-digitButtons.forEach(button => button.addEventListener('click', handleDigitButtons));
-digitButtons.forEach(button => button.addEventListener('ontouch', handleDigitButtons));
-
-const operatorButtons = document.querySelectorAll('.operator-button button');
-operatorButtons.forEach(button => button.addEventListener('click', handleOperatorButtons));
-operatorButtons.forEach(button => button.addEventListener('ontouch', handleOperatorButtons));
-
 const digitScreen = document.querySelector('.digit-screen p');
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => button.addEventListener('click', handleButtons));
+buttons.forEach(button => button.addEventListener('ontouch', handleButtons));
+let currentString = [];
 
-let arrOfDigits = [];
-let currentNum = null; 
-let arrOfNumbers = [];
+function returnNumOrChar(char) {
+  const regex = /[0-9]/
+  if (regex.test(char)) {
+    return parseInt(char);
+  } else return char;  
+}
 
-
-function handleDigitButtons(e) {
-    arrOfDigits.push(Number(e.currentTarget.textContent));
-    
-    currentNum = Number(arrOfDigits.join(''));
-    digitScreen.textContent = currentNum;
-  }
-
-  function handleOperatorButtons(e) {
-    console.log(e.currentTarget.textContent);
-    
-    let result = 0;
-
-    switch (e.currentTarget.textContent) {
-      case '+': 
-        console.log('its a +');
-        arrOfNumbers.push(currentNum);
-        arrOfDigits = [];
-        currentNum = null;
-        digitScreen.textContent = currentNum;    
-
-        add(arrOfNumbers);
-        
-        break;
-      case '-': 
-      console.log('its a -');
-      break;
-      case '*': 
-      console.log('its a *');
-      break;
-      case '/': 
-      console.log('its a /');
-      break;
-      case 'CA': 
-      console.log('its CA');
-        break;
-        case 'C': 
-        console.log('its a C');
-        break;
-        case '=': 
-        console.log('its a =');
-        digitScreen.textContent = result;
-        
-        break;
-        default:
-        console.log('How did you f this up?');
-      }
-    };
-
+function handleButtons(e) {
+  currentString.push(returnNumOrChar(e.currentTarget.innerText));
+  currentString.join()
+  digitScreen.textContent = currentString.join('');
+  console.log(currentString)
+}
 
     const operations = {
 

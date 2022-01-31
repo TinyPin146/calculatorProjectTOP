@@ -52,13 +52,13 @@ body {
 }
 
 /* ! Digit buttons */
-.digit-button {
+.digit-button-wrapper {
     display: grid;
     grid-gap: .15rem;
     grid-template-columns: repeat(3, 1fr);
 
 }
-.digit-button button {
+.digit-button {
     background-color: var(--color-dark-light);
     border: 1px var(--color-dark-complementer) solid;
     /* box-shadow: 0px 10px 13px -7px #ff7d5d; */
@@ -66,7 +66,7 @@ body {
     opacity: .7;
     
 }
-.digit-button button:hover {
+.digit-button:hover {
     transition: all .2s;
     opacity: 1;
 }
@@ -75,12 +75,12 @@ body {
 }
 
 /* ! Operator buttons */
-.operator-button {
+.operator-button-wrapper {
     display: grid;
     grid-gap: .3rem;
     grid-template-columns: repeat(4, 1fr);
 }
-.operator-button button {
+.operator-button {
     border-radius: var(--br-buttons);
 }
 .operator-button-clearall {
