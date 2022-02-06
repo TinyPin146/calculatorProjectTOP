@@ -111,17 +111,16 @@ body {
 .digit-screen {
     padding: 2em;
 
-    overflow: scroll;
-    
     background-color: var(--color-highlight);
 }
 .current-number {
     min-height: 4rem;
     max-width: 50%;
     box-sizing: border-box;
-
+    
     padding: .5rem;
     margin-bottom: 1rem;
+    overflow: scroll;
 
     display: flex;
     align-items: center;
@@ -136,6 +135,7 @@ body {
     box-sizing: border-box;
 
     padding: .5rem;
+    overflow: scroll;
 
     display: flex;
     align-items: center;
