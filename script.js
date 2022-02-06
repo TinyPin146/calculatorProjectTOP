@@ -6,21 +6,21 @@ buttons.forEach(button => button.addEventListener('ontouch', handleButtons));
 let currentNum = [];
 let currentNumsAndOperators = [];
 
-function returnNumOrChar(char) {
-  const regex = /[0-9]/
-  if (regex.test(char)) {
-    return parseInt(char);
-  } else return char;  
-}
-
 function handleInputButtons(char) {
-  currentNum.push(returnNumOrChar(char));
+  currentNum.push(char);
   digitScreenCurrentNum.textContent = currentNum.join('');
   console.log(currentNum)
 }
 
+function afterEqualsReset() {
+  currentNum = [];
+  digitScreenCurrentNum.textContent = currentNum.join('');
+  digitScreenCurrentEquation.textContent = currentNumsAndOperators.join(' ')
+  console.log(currentNumsAndOperators)
+}
+
 function handleOperatorButtons(char) {
-  currentNumsAndOperators.push(parseInt(currentNum.join('')));
+  currentNumsAndOperators.push(parseFloat(currentNum.join('')));
   currentNum = [];
   currentNumsAndOperators.push(char);
 
@@ -43,7 +43,7 @@ function handleOperatorButtons(char) {
         currentNumsAndOperators.splice(1, 2);
         break;
       default:
-        console.log('default');
+        currentNumsAndOperators.splice(1,1);
         break;
     }
   }
@@ -53,8 +53,13 @@ function handleOperatorButtons(char) {
 }
 
 function handleClearButton() {
-  currentNum.pop();
+  if(!currentNum) {
+    currentNumsAndOperators.pop(currentNumsAndOperators[1])
+  } else {
+    currentNum.pop();
+  }; 
   digitScreenCurrentNum.textContent = currentNum.join('');
+  digitScreenCurrentEquation.textContent = currentNumsAndOperators.join(' ')
 }
 
 function handleClearAllButton() {
@@ -66,33 +71,37 @@ function handleClearAllButton() {
 
 function handleEqualsButton() {
   // let myArray = currentNumsAndOperators.map()
-  currentNumsAndOperators.push(parseInt(currentNum.join('')));
+  if (currentNumsAndOperators.length !== 2) return;
 
   switch (currentNumsAndOperators[1]) {
     case '+':
+      currentNumsAndOperators.push(parseFloat(currentNum.join('')));  
       currentNumsAndOperators[0] = operations.add(currentNumsAndOperators[0], currentNumsAndOperators[2]);
       currentNumsAndOperators.splice(1, 2);
+      afterEqualsReset();
       break;
     case '-':
+      currentNumsAndOperators.push(parseFloat(currentNum.join('')));
       currentNumsAndOperators[0] = operations.subtract(currentNumsAndOperators[0], currentNumsAndOperators[2]);
       currentNumsAndOperators.splice(1, 2);
+      afterEqualsReset();
       break;
     case '*':
+      currentNumsAndOperators.push(parseFloat(currentNum.join('')));
       currentNumsAndOperators[0] = operations.multiply(currentNumsAndOperators[0], currentNumsAndOperators[2]);
       currentNumsAndOperators.splice(1, 2);
+      afterEqualsReset();
       break;
     case '/':
+      currentNumsAndOperators.push(parseFloat(currentNum.join('')));
       currentNumsAndOperators[0] = operations.divide(currentNumsAndOperators[0], currentNumsAndOperators[2]);
       currentNumsAndOperators.splice(1, 2);
+      afterEqualsReset();
       break;
     default:
-      console.log('default');
+        console.log('Wut')
       break;
   }
-  currentNum = [];
-  digitScreenCurrentNum.textContent = currentNum.join('');
-  digitScreenCurrentEquation.textContent = currentNumsAndOperators.join(' ')
-  console.log(currentNumsAndOperators)
 }
 
 const operations = {
@@ -128,24 +137,10 @@ const operations = {
 
 function handleButtons(e) {
   switch (e.currentTarget.innerText) {
-    case '1':
-    case '2': 
-    case '3': 
-    case '4': 
-    case '5': 
-    case '6': 
-    case '7': 
-    case '8': 
-    case '9': 
-    case '0': 
+    case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': case '0': case '.':
       handleInputButtons(e.currentTarget.innerText)
       break;
-    case '+': 
-    case '-': 
-    case '*': 
-    case '/': 
-    case '(': 
-    case ')': 
+    case '+': case '-': case '*': case '/':
       handleOperatorButtons(e.currentTarget.innerText);
       break;
     case 'C':
@@ -159,8 +154,5 @@ function handleButtons(e) {
        break;    
     default:
       console.log('wut')
-      break;  
   }
 }
-
-    
