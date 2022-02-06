@@ -9,14 +9,12 @@ let currentNumsAndOperators = [];
 function handleInputButtons(char) {
   currentNum.push(char);
   digitScreenCurrentNum.textContent = currentNum.join('');
-  console.log(currentNum)
 }
 
 function afterEqualsReset() {
   currentNum = [];
   digitScreenCurrentNum.textContent = currentNum.join('');
   digitScreenCurrentEquation.textContent = currentNumsAndOperators.join(' ')
-  console.log(currentNumsAndOperators)
 }
 
 function handleOperatorButtons(char) {
@@ -49,11 +47,10 @@ function handleOperatorButtons(char) {
   }
 
   digitScreenCurrentEquation.textContent = currentNumsAndOperators.join(' ')
-  console.log(currentNumsAndOperators)
 }
 
 function handleClearButton() {
-  if(!currentNum) {
+  if(currentNum.length === 0) {
     currentNumsAndOperators.pop(currentNumsAndOperators[1])
   } else {
     currentNum.pop();

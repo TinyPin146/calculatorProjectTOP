@@ -108,12 +108,22 @@ body {
     padding: 2em;
 }
 .current-number {
-    min-height: 32px;
+    background-color: #807d7d;
+    box-sizing: border-box;
+    min-height: 4em;
+    max-width: 50%;
+    padding: .5em;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
 }
 .current-equation {
-    min-height: 32px;
+    box-sizing: border-box;
+    min-height: 4em;
     background-color: #b6b0b0;
     border-radius: 5px;
+    padding: .5em;
     display: flex;
     align-items: center;
 }
