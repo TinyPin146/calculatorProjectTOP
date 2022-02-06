@@ -104,11 +104,11 @@ function handleEqualsButton() {
 const operations = {
 
   add: function() {
-      return arguments[0] + arguments[1];
+      return (arguments[0] + arguments[1]).toFixed(2);
     },
 
   subtract: function() {
-    return arguments[0] - arguments[1];
+    return (arguments[0] - arguments[1]).toFixed(2);
     },
     
   multiply: function() {
@@ -118,7 +118,7 @@ const operations = {
         let nextItem = mltplyArray[i];
         mltplyResult *= nextItem;
       }
-      return mltplyResult;
+      return mltplyResult.toFixed(2);
     },
 
   divide: function() {
@@ -128,7 +128,7 @@ const operations = {
       let nextItem = divideArray[i];
       divideResult /= nextItem;
     }
-    return divideResult;
+    return  divideResult.toFixed(2);
   },
 }
 
