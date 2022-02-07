@@ -110,6 +110,7 @@ body {
 /* ! Digit screen */
 .digit-screen {
     padding: 2em;
+    overflow: scroll;
 
     background-color: var(--color-highlight);
 }

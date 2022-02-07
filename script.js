@@ -3,6 +3,7 @@ const digitScreenCurrentEquation = document.querySelector('.digit-screen .curren
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', handleButtons));
 buttons.forEach(button => button.addEventListener('ontouch', handleButtons));
+window.addEventListener('keydown', handleButtonsWithKey);
 let currentNum = [];
 let currentNumsAndOperators = [];
 
@@ -137,8 +138,15 @@ function handleButtons(e) {
     case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': case '0': case '.':
       handleInputButtons(e.currentTarget.innerText)
       break;
-    case '+': case '-': case '*': case '/':
+    case '+': case '*': case '/':
       handleOperatorButtons(e.currentTarget.innerText);
+      break;
+    case '-':
+      if (currentNum.length === 0) {
+        handleInputButtons(e.currentTarget.innerText);
+      } else {
+        handleOperatorButtons(e.currentTarget.innerText);
+      };
       break;
     case 'C':
       handleClearButton();
@@ -147,6 +155,38 @@ function handleButtons(e) {
       handleClearAllButton();
       break;
     case '=':
+       handleEqualsButton();
+       break;    
+    default:
+      console.log('wut')
+  }
+}
+function handleButtonsWithKey(e) {
+  // if(e) {
+  //   console.log(e);
+  //   return;
+  // }
+  switch (e.key) {
+    case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9': case '0': case '.':
+      handleInputButtons(e.key)
+      break;
+    case '+': case '*': case '/':
+      handleOperatorButtons(e.key);
+      break;
+    case '-':
+      if (currentNum.length === 0) {
+        handleInputButtons(e.key);
+      } else {
+        handleOperatorButtons(e.key);
+      };
+      break;
+    case 'Backspace':
+      handleClearButton();
+      break;
+    case 'C':
+      handleClearAllButton();
+      break;
+    case 'Enter':
        handleEqualsButton();
        break;    
     default:
